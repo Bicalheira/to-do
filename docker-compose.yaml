@@ -1,0 +1,32 @@
+version: '2'
+services:
+  db:
+    container_name: todo-database
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: 'todo-database'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+  back-end:
+    container_name: todo-back-end
+    build:
+      context: ./back-end
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./back-end:/app/back-end
+      - /app/back-end/node_modules
+    working_dir: /app/back-end
+  # front-end:
+  #   container_name: todo-front-end
+  #   build:
+  #     context: ./front-end
+  #   ports:
+  #     - '4200:4200'
+  #   volumes:
+  #     - ./front-end:/app/frontend
+  #     - /app/front-end/node_modules
+  #   working_dir: /app/front-end
