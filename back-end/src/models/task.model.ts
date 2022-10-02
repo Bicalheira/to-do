@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm"
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm"
 import { BaseEntity } from "./base";
 import { Project } from "./project.model"
 
@@ -10,6 +10,7 @@ export class Task extends BaseEntity {
     @Column()
     text: string
 
-    @ManyToOne(() => Project, (project) => project.tasks)
+    @JoinColumn({ name: "projectId" })
+    @ManyToOne(() => Project, (project) => project.tasks, { onDelete: "CASCADE" })
     project: Project;
 }

@@ -14,6 +14,6 @@ export class Project extends BaseEntity {
     @OneToMany(() => Task, (task) => task.project)
     tasks: Task[];
 
-    @ManyToOne(() => User, (user) => user.projects)
+    @ManyToOne(() => User, (user) => user.projects, { onDelete: "CASCADE" })
     user: User;
 }

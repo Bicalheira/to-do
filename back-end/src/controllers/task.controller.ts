@@ -1,53 +1,53 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, Request, UseGuards } from "@nestjs/common";
 import { ApiHeader, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
-import { CreateProjectDto } from "src/dto/project/creade-project.dto";
-import { UpdateProjectDto } from "src/dto/project/update-project.dto";
+import { CreateTaskDto } from "src/dto/task/create-task.dto";
+import { UpdateTaskDto } from "src/dto/task/update-task.dto";
 import { AuthGuard } from "src/guards/auth-guard";
-import { ProjectService } from "src/services/project.service";
+import { TaskService } from "src/services/task.service";
 
 
 @UseGuards(AuthGuard)
-@Controller("/projects")
-@ApiTags("Projects")
-export class ProjectController {
+@Controller("/tasks")
+@ApiTags("Tasks")
+export class TaskController {
     constructor(
-        protected readonly projectsService: ProjectService,
+        protected readonly tasksService: TaskService,
     ) { }
 
     @Get()
-    @ApiOperation({ summary: 'Get all projects' })
+    @ApiOperation({ summary: 'Get all tasks' })
     @ApiResponse({ status: 403, description: "Invalid credentials" })
     @ApiResponse({ status: 200, description: "Success Response" })
     @ApiHeader({ name: 'Authorization', description: 'Authorization Code' })
-    getProjects(@Request() request) {
-        return this.projectsService.getProjects(request.user);
+    getTasks(@Param() projectId) {
+        return this.tasksService.getTasks(projectId);
     }
 
     @Post()
-    @ApiOperation({ summary: 'Create project' })
+    @ApiOperation({ summary: 'Create task' })
     @ApiResponse({ status: 403, description: "Invalid credentials" })
     @ApiResponse({ status: 200, description: "Success Response" })
     @ApiHeader({ name: 'Authorization', description: 'Authorization Code' })
-    createProject(@Request() request, @Body() createProjectDto: CreateProjectDto) {
-        return this.projectsService.createProject(createProjectDto, request.user);
+    createTask(@Body() createTaskDto: CreateTaskDto) {
+        return this.tasksService.createTask(createTaskDto);
     }
 
     @Put(":id")
-    @ApiOperation({ summary: 'Update project' })
+    @ApiOperation({ summary: 'Update task' })
     @ApiResponse({ status: 403, description: "Invalid credentials" })
     @ApiResponse({ status: 200, description: "Success Response" })
     @ApiHeader({ name: 'Authorization', description: 'Authorization Code' })
-    updateProject(@Param() id: number, @Body() updateProjectDto: UpdateProjectDto) {
-        return this.projectsService.updateProject(id, updateProjectDto)
+    updateTask(@Param() id: number, @Body() updateTaskDto: UpdateTaskDto) {
+        return this.tasksService.updateTask(id, updateTaskDto)
     }
 
     @Delete(":id")
-    @ApiOperation({ summary: 'Delete project' })
+    @ApiOperation({ summary: 'Delete task' })
     @ApiResponse({ status: 403, description: "Invalid credentials" })
     @ApiResponse({ status: 200, description: "Success Response" })
     @ApiHeader({ name: 'Authorization', description: 'Authorization Code' })
-    deleteProject(@Param() id: number) {
-        return this.projectsService.deleteProject(id)
+    deleteTask(@Param() id: number) {
+        return this.tasksService.deleteTask(id)
     }
 }
 
