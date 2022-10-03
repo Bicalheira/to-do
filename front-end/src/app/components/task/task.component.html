@@ -3,13 +3,13 @@
 
     <ul class="list item__list" *ngIf="!isButtonsDisabled">
         <li class="item item--button">
-            <button class="item__button item__button--red" (click)="deleteTask(task.id)">icon</button>
+            <button class="item__button item__button--red" (click)="deleteTask(task.id)"><img src="./../../../assets/icons/tresh.svg" alt=""></button>
         </li>
         <li class="item item--button">
-            <button class="item__button item__button--orange" (click)="updateTask(task.id)">icon</button>
+            <button class="item__button item__button--orange" (click)="updateTask(task.id)"><img src="./../../../assets/icons/pen.svg" alt=""></button>
         </li>
         <li class="item item--button">
-            <button class="item__button item__button--green" (click)="updateStatusTask(task)">icon</button>
+            <button class="item__button item__button--green" (click)="updateStatusTask(task)"><img src="./../../../assets/icons/check.svg" alt=""></button>
         </li>
     </ul>
 </li>

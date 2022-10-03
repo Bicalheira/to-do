@@ -5,7 +5,7 @@
         <div class="form__group">
             <input class="form__input form__input--left-border" type="text" name="project" id="project"
                 placeholder="Insert a new project" required [formControl]="$any(form.get('name'))">
-            <button class="form__button form__button--inline" (click)="createProject()">Icone</button>
+            <button class="form__button form__button--inline button--reset" (click)="createProject()"><img src="./../../../assets/icons/add.svg" alt=""></button>
         </div>
     </form>
 
