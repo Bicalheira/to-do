@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="card__header">
+        <h2 class="card__title">{{project.name}}
+            <div>
+                <button (click)="updateProject(project.id)">edit</button> <button
+                    (click)="deleteProject(project.id)">X</button>
+            </div>
+        </h2>
+    </div>
+
+    <div class="card__body">
+        <form action="" class="form">
+            <div class="form__group">
+                <input style="flex: 1;" type="text" class="form__input form__input--left-border" name="task"
+                    id="task" placeholder="Insert a new task" [formControl]="$any(form.get('text'))" required>
+                <button class="form__button form__button--inline" (click)="createTask(project.id)">icon</button>
+            </div>
+        </form>
+
+        <h3 class="card__subtitle"><span>
+                <hr>
+            </span>Todo <span>
+                <hr>
+            </span></h3>
+        <ul class="card__list list">
+  
+           <bolttech-task (taskUpdated)="taskUpdated()" [task]="task"   *ngFor="let task of project.tasks | filterStatus:0"></bolttech-task>
+        </ul>
+
+        <h3 class="card__subtitle"><span>
+                <hr>
+            </span>Done <span>
+                <hr>
+            </span></h3>
+        <ul class="card__list list">
+            <bolttech-task (taskUpdated)="taskUpdated()"  [task]="task" [isButtonsDisabled]="true" [isDone]="true" *ngFor="let task of project.tasks | filterStatus:1"></bolttech-task>
+        </ul>
+    </div>
+
+    <div class="card__footer">
+
+    </div>
+</div>

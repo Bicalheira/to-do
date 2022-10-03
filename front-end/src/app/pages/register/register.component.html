@@ -4,11 +4,13 @@
             <figure style="margin-bottom: 1rem; text-align: center;">
                 <img style="max-width: 290px;" src="./../../../assets/logo.svg" alt="Company's logo">
             </figure>
-            <form class=" form form--column form--padding-y" action="">
-                <input class="form__input" type="text" name="name" id="name" placeholder="Name" required>
-                <input class="form__input" type="text" name="username" id="username" placeholder="Username" required>
-                <input class="form__input" type="password" name="password" id="password" placeholder="Password"
+            <form class=" form form--column form--padding-y" action="" [formGroup]="form" (submit)="send()">
+                <input class="form__input" type="text" name="name" id="name" placeholder="Name" formControlName="name"
                     required>
+                <input class="form__input" type="text" name="username" id="username" placeholder="Username"
+                    formControlName="username" required>
+                <input class="form__input" type="password" name="password" id="password" placeholder="Password"
+                    formControlName="password" required>
                 <button class="form__button" type="submit">Register</button>
             </form>
         </span>

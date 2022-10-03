@@ -20,12 +20,17 @@ export class TaskService {
     }
 
     async createTask(createTaskDto: CreateTaskDto) {
+        const project = new Project();
+        project.id = createTaskDto.projectId;
+
         return await this.taskRepository.save({
             ...createTaskDto,
+            project
         })
     }
 
     async updateTask(id: number, updateTasktDto: UpdateTaskDto) {
+        console.log(id, updateTasktDto)
         return await this.taskRepository.update({
             id,
         }, updateTasktDto);

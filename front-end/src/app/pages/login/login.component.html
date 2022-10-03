@@ -5,14 +5,15 @@
                 <img style="max-width: 290px;" src="./../../../assets/logo.svg" alt="Company's logo">
             </figure>
 
-            <form class="form form--column form--padding-y" action="">
-                <input class="form__input" type="email" name="email" id="email" placeholder="E-mail" required>
+            <form class="form form--column form--padding-y" action="" [formGroup]="form" (submit)="login()">
+                <input class="form__input" type="text" name="username" id="username" placeholder="E-mail"
+                    formControlName="username" required>
                 <input class="form__input" type="password" name="password" id="password" placeholder="password"
-                    required>
-                <button type="submit" class="form__button">Sign in</button>
+                    formControlName="password" required>
+                <button type="submit" class="form__button" >Sign in</button>
             </form>
 
-            <span class="login__text">New here? <a class="login__link" href="#">Create yout account</a></span>
+            <span class="login__text">New here? <a class="login__link" routerLink="/register">Create yout account</a></span>
         </span>
     </div>
 </section>

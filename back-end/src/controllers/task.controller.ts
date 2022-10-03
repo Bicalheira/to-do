@@ -37,8 +37,8 @@ export class TaskController {
     @ApiResponse({ status: 403, description: "Invalid credentials" })
     @ApiResponse({ status: 200, description: "Success Response" })
     @ApiHeader({ name: 'Authorization', description: 'Authorization Code' })
-    updateTask(@Param() id: number, @Body() updateTaskDto: UpdateTaskDto) {
-        return this.tasksService.updateTask(id, updateTaskDto)
+    updateTask(@Param() id: { id: number }, @Body() updateTaskDto: UpdateTaskDto) {
+        return this.tasksService.updateTask(id.id, updateTaskDto)
     }
 
     @Delete(":id")
@@ -46,7 +46,7 @@ export class TaskController {
     @ApiResponse({ status: 403, description: "Invalid credentials" })
     @ApiResponse({ status: 200, description: "Success Response" })
     @ApiHeader({ name: 'Authorization', description: 'Authorization Code' })
-    deleteTask(@Param() id: number) {
+    deleteTask(@Param() id: number ) {
         return this.tasksService.deleteTask(id)
     }
 }

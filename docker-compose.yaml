@@ -20,13 +20,14 @@ services:
       - ./back-end:/app/back-end
       - /app/back-end/node_modules
     working_dir: /app/back-end
-  # front-end:
-  #   container_name: todo-front-end
-  #   build:
-  #     context: ./front-end
-  #   ports:
-  #     - '4200:4200'
-  #   volumes:
-  #     - ./front-end:/app/frontend
-  #     - /app/front-end/node_modules
-  #   working_dir: /app/front-end
+  front-end:
+    container_name: todo-front-end
+    build:
+      context: ./front-end
+    ports:
+      - '4200:4200'
+      - '49153:49153'
+    volumes:
+      - ./front-end:/app/front-end
+      - /app/front-end/node_modules
+    working_dir: /app/front-end

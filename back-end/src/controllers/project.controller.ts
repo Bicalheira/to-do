@@ -37,8 +37,8 @@ export class ProjectController {
     @ApiResponse({ status: 403, description: "Invalid credentials" })
     @ApiResponse({ status: 200, description: "Success Response" })
     @ApiHeader({ name: 'Authorization', description: 'Authorization Code' })
-    updateProject(@Param() id: number, @Body() updateProjectDto: UpdateProjectDto) {
-        return this.projectsService.updateProject(id, updateProjectDto)
+    updateProject(@Param() id: { id: number }, @Body() updateProjectDto: UpdateProjectDto) {
+        return this.projectsService.updateProject(id.id, updateProjectDto)
     }
 
     @Delete(":id")

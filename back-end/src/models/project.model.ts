@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, JoinTable, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import { BaseEntity } from "./base";
 import { Task } from "./task.model";
 import { User } from "./user.model";
@@ -11,7 +11,8 @@ export class Project extends BaseEntity {
     @Column()
     name: string
 
-    @OneToMany(() => Task, (task) => task.project)
+    @OneToMany(() => Task, (task) => task.project, { eager: true })
+    @JoinTable()
     tasks: Task[];
 
     @ManyToOne(() => User, (user) => user.projects, { onDelete: "CASCADE" })

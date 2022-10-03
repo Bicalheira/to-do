@@ -27,9 +27,9 @@ $background-colored: linear-gradient(167.95deg, #04B2D9 0%, #0788D9 100%);
 section {
     background: $background-colored;
 
-    @media screen and (min-width: 768px) {
-        min-height: 100vh;
-    }
+    min-height: 100vh;
+
+    @media screen and (min-width: 768px) {}
 }
 
 img {
@@ -201,8 +201,9 @@ button {
     background-color: $color-white;
 
     border-radius: $border-radius;
+    border: none;
 
-    max-width: 400px;
+    // max-width: 400px;
 
     input {
         background-color: $color-gray-light;
@@ -257,8 +258,6 @@ button {
         }
     }
 
-
-
 }
 
 .list {
@@ -271,6 +270,8 @@ button {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        margin-bottom: 0.625rem;
     }
 }
 

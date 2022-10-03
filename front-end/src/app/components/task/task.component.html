@@ -1,0 +1,15 @@
+<li class="list__item item item--row" [title]="task.updatedAt | date:'MM/dd/yyyy hh:mm:ss'">
+    <h4 [class]="'item__title' + (isDone ? ' item__title--done' : '')">{{task.text}}</h4>
+
+    <ul class="list item__list" *ngIf="!isButtonsDisabled">
+        <li class="item item--button">
+            <button class="item__button item__button--red" (click)="deleteTask(task.id)">icon</button>
+        </li>
+        <li class="item item--button">
+            <button class="item__button item__button--orange" (click)="updateTask(task.id)">icon</button>
+        </li>
+        <li class="item item--button">
+            <button class="item__button item__button--green" (click)="updateStatusTask(task)">icon</button>
+        </li>
+    </ul>
+</li>

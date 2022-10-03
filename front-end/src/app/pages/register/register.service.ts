@@ -1,4 +1,7 @@
 import { Injectable } from "@angular/core";
+import { firstValueFrom } from "rxjs";
+import { UserRepository } from "src/app/repositories/user.repository";
+import { UserForm } from "src/app/models/user.model";
 
 @Injectable({
     providedIn: "root"
@@ -6,12 +9,11 @@ import { Injectable } from "@angular/core";
 
 export class RegisterService {
 
-    constructor() {
+    constructor(private userRepository: UserRepository) {
 
     }
 
-    send() {
-
+    register(user: UserForm) {
+        return firstValueFrom(this.userRepository.register(user));
     }
-
 }

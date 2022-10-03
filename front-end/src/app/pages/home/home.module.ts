@@ -1,5 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComponentModule } from 'src/app/components/component.module';
+import { PipeModule } from 'src/app/pipes/pipe.module';
 import { HomeComponent } from './home.component';
 
 
@@ -8,7 +11,11 @@ import { HomeComponent } from './home.component';
         HomeComponent
     ],
     imports: [
-        BrowserModule
+        ReactiveFormsModule,
+        FormsModule,
+        CommonModule,
+        PipeModule,
+        ComponentModule
     ],
     providers: [],
     bootstrap: []
